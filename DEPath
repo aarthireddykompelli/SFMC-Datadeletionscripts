@@ -1,0 +1,21 @@
+<script runat="server">
+Platform.Load("core","1.1.5");  
+var DEprop = //use either "Name" or "Customer Key"
+var DEval = //provide either the Name or External Key
+var FindDE = DataExtension.Retrieve({Property:DEprop,SimpleOperator:"equals",Value:DEval});
+var FolderID = FindDE[0].CategoryID;
+var DEname = FindDE[0].Name;
+var list = [];
+  list.push(DEname);
+var path = function(id) {
+    if (id> 0) {
+        var results = Folder.Retrieve({Property:"ID",SimpleOperator:"equals",Value:id});
+    list.unshift(results [0].Name);
+        return path(results[0].ParentFolder.ID);
+    } else {
+        return id;
+    }
+};
+path(FolderID);
+Write(list.join("> "));
+</script>
