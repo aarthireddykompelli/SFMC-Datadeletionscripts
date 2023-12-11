@@ -1,0 +1,15 @@
+<script runat="server">
+
+Platform.Load("Core", "1");
+
+     var deleteDE = DataExtension.Init("yourDELETE_DE External Key");
+     var data = deleteDE.Rows.Retrieve();
+
+     for (var i=0; i < data.length; i++) {
+
+       var subKey = data[i].SubscriberKey;
+
+       var rowDelete = Platform.Function.DeleteData('MASTER_DE',['SubscriberKey'],[subKey]);
+
+    };
+</script>
