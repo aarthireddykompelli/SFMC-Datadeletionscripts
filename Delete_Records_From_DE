@@ -1,15 +1,22 @@
 <script runat="server">
 
-Platform.Load("Core", "1");
+    Platform.Load("core", "1");
 
-     var deleteDE = DataExtension.Init("yourDELETE_DE External Key");
-     var data = deleteDE.Rows.Retrieve();
+	try {
 
-     for (var i=0; i < data.length; i++) {
+        var customerKey = "insert-customer-key";
 
-       var subKey = data[i].SubscriberKey;
+        var de = DataExtension.Init(customerKey);
 
-       var rowDelete = Platform.Function.DeleteData('MASTER_DE',['SubscriberKey'],[subKey]);
+        var result = de.Rows.Remove(
+            ["EmailAddress"], 
+            ["example@mail.com"]
+        );
 
-    };
+        Write(Stringify(result));
+		
+	} catch(error) {
+        Write(Stringify(error));
+    }	
+
 </script>
