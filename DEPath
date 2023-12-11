@@ -1,3 +1,7 @@
+// thanks to ZUZANNA JARCZYNSKA for the great article on creating DE inventory
+
+// https://sfmarketing.cloud/2019/10/14/find-a-data-extension-and-its-folder-path-using-ssjs/
+
 <script runat="server">
 Platform.Load("core","1.1.5");  
 var DEprop = //use either "Name" or "Customer Key"
