@@ -1,3 +1,9 @@
+// thanks to gortonington for the great article on creating DE inventory
+
+// https://gortonington.com/sfmc-data-extension-inventory-take-2/
+
+
+
 <script runat=server>
 Platform.Load("Core","1.1.1");
 
